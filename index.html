@@ -1,0 +1,514 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="SS PRINTING - Visiting cards, bill books, stickers, banners and custom printing services.">
+<title>SS PRINTING | Your Ideas, Our Print</title>
+
+<style>
+:root {
+  --navy: #071b35;
+  --navy2: #12375b;
+  --gold: #f5bd45;
+  --white: #fff;
+  --light: #f3f6fb;
+  --text: #1a2a3d;
+  --muted: #657286;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--light);
+  color: var(--text);
+  line-height: 1.6;
+}
+a { text-decoration: none; }
+button { font-family: inherit; }
+header {
+  background: var(--navy);
+  color: white;
+  padding: 15px 7%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+.logo { font-size: 25px; font-weight: 900; letter-spacing: 1px; }
+.logo span { color: var(--gold); }
+nav { display: flex; gap: 18px; flex-wrap: wrap; }
+nav a { color: white; font-size: 14px; }
+nav a:hover { color: var(--gold); }
+
+.hero {
+  background: linear-gradient(125deg, var(--navy), var(--navy2));
+  padding: 85px 7%;
+  text-align: center;
+  color: white;
+}
+.hero h1 { font-size: clamp(34px, 5vw, 58px); line-height: 1.15; }
+.hero h1 span { color: var(--gold); }
+.hero p { max-width: 690px; margin: 20px auto; color: #e1e8f2; }
+.btn {
+  display: inline-block;
+  padding: 12px 21px;
+  margin: 5px;
+  background: var(--gold);
+  color: var(--navy);
+  font-weight: bold;
+  border: 0;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: .2s;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn-outline { border: 1px solid white; background: transparent; color: white; }
+
+section { padding: 60px 7%; }
+.section-title { text-align: center; margin-bottom: 32px; }
+.section-title h2 { font-size: clamp(25px, 3vw, 34px); color: var(--navy); }
+.section-title p { color: var(--muted); margin-top: 7px; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 22px;
+}
+.card {
+  background: white;
+  border-radius: 13px;
+  overflow: hidden;
+  box-shadow: 0 5px 22px #071b3510;
+  transition: transform .2s;
+}
+.card:hover { transform: translateY(-4px); }
+.service-card {
+  padding: 25px 20px;
+  text-align: center;
+  border-top: 4px solid var(--gold);
+}
+.service-icon { font-size: 38px; margin-bottom: 10px; }
+.card h3 { color: var(--navy); margin-bottom: 8px; }
+.card p { color: var(--muted); font-size: 14px; margin-bottom: 15px; }
+.view-btn {
+  display: inline-block;
+  background: var(--navy);
+  color: var(--gold);
+  padding: 10px 16px;
+  border-radius: 6px;
+  border: none;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.view-btn:hover { background: var(--gold); color: var(--navy); }
+
+#galleryPage { display: none; min-height: 65vh; }
+.gallery-top { margin-bottom: 25px; }
+.sample-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 20px #071b3515; }
+.sample-card img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+  cursor: zoom-in;
+  background: #e8edf4;
+}
+.sample-info { padding: 16px; }
+.sample-info h3 { margin-bottom: 12px; }
+.sample-info .view-btn { margin-top: 4px; }
+
+#preview {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: #000e;
+  z-index: 100;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+#preview img {
+  max-width: 95%;
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: 8px;
+}
+#previewClose {
+  position: absolute;
+  right: 22px;
+  top: 15px;
+  background: white;
+  color: #111;
+  border: none;
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.services { background: white; }
+.cta { background: var(--navy); color: white; text-align: center; }
+.cta h2 { font-size: 30px; }
+.cta p { margin: 12px auto 20px; color: #e1e8f2; max-width: 650px; }
+.contact-box {
+  max-width: 720px;
+  margin: auto;
+  background: white;
+  padding: 28px;
+  border-radius: 14px;
+  box-shadow: 0 5px 22px #071b3510;
+}
+.contact-box p { margin: 10px 0; overflow-wrap: anywhere; }
+.contact-box a:not(.btn) { color: #0756a8; }
+footer { background: #041225; color: white; text-align: center; padding: 23px; font-size: 13px; }
+.whatsapp-float {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  background: #20bd63;
+  color: white;
+  padding: 13px 18px;
+  border-radius: 50px;
+  font-weight: bold;
+  box-shadow: 0 4px 15px #0003;
+  z-index: 50;
+}
+.empty-message { text-align: center; padding: 30px; color: var(--muted); }
+
+@media(max-width: 600px) {
+  header { justify-content: center; text-align: center; }
+  nav { justify-content: center; gap: 13px; }
+  .hero { padding: 60px 6%; }
+  section { padding: 45px 6%; }
+  .grid { grid-template-columns: repeat(auto-fit, minmax(155px, 1fr)); gap: 13px; }
+  .service-card { padding: 20px 12px; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <a href="#home" class="logo" onclick="showHome()">
+    SS <span>PRINTING</span>
+  </a>
+  <nav>
+    <a href="#home" onclick="showHome()">Home</a>
+    <a href="#services" onclick="showHome()">Our Services</a>
+    <a href="#platforms" onclick="showHome()">Platforms</a>
+    <a href="#contact" onclick="showHome()">Contact</a>
+  </nav>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <h1>Your Ideas,<br><span>Our Print.</span></h1>
+  <p>
+    Professional printing solutions for your business.
+    Explore our work samples, choose a category and contact SS PRINTING directly.
+  </p>
+  <a href="#services" class="btn">Explore Our Work</a>
+  <a href="#contact" class="btn btn-outline">Contact Us</a>
+</section>
+
+<section class="services" id="services">
+  <div class="section-title">
+    <h2>Our Printing Services</h2>
+    <p>Click any category to view its design samples.</p>
+  </div>
+
+  <div class="grid" id="serviceGrid"></div>
+</section>
+
+<section id="galleryPage">
+  <div class="gallery-top">
+    <button class="view-btn" onclick="showHome()">← Back to Services</button>
+  </div>
+  <div class="section-title">
+    <h2 id="galleryTitle">Our Work</h2>
+    <p id="galleryDescription">Explore our printing samples.</p>
+  </div>
+  <div class="grid" id="sampleGrid"></div>
+  <div style="text-align:center; margin-top:30px;">
+    <a id="galleryEnquiry" class="btn" href="#" target="_blank" rel="noopener">
+      Enquire About This Service
+    </a>
+  </div>
+</section>
+
+<section id="platforms">
+  <div class="section-title">
+    <h2>Connect With SS PRINTING</h2>
+    <p>Visit our social platforms and contact us from one place.</p>
+  </div>
+  <div class="grid">
+    <div class="card service-card">
+      <div class="service-icon">📸</div>
+      <h3>Instagram</h3>
+      <p>View our designs and project updates.</p>
+      <a class="view-btn" href="https://www.instagram.com/" target="_blank" rel="noopener">Visit Instagram →</a>
+    </div>
+    <div class="card service-card">
+      <div class="service-icon">📘</div>
+      <h3>Facebook</h3>
+      <p>Explore business news and promotions.</p>
+      <a class="view-btn" href="https://www.facebook.com/" target="_blank" rel="noopener">Visit Facebook →</a>
+    </div>
+    <div class="card service-card">
+      <div class="service-icon">▶️</div>
+      <h3>YouTube</h3>
+      <p>Watch printing videos and demonstrations.</p>
+      <a class="view-btn" href="https://www.youtube.com/" target="_blank" rel="noopener">Visit YouTube →</a>
+    </div>
+    <div class="card service-card">
+      <div class="service-icon">📍</div>
+      <h3>Google Maps</h3>
+      <p>Find our business location.</p>
+      <a class="view-btn" href="https://www.google.com/maps/search/?api=1&query=SS+PRINTING+Satyam+Galleria+P4+Greater+Noida" target="_blank" rel="noopener">Find Us →</a>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <h2>Need Printing for Your Business?</h2>
+  <p>Send your requirements to SS PRINTING on WhatsApp for an enquiry.</p>
+  <a class="btn" href="https://wa.me/918796446612?text=Hello%20SS%20PRINTING%2C%20I%20want%20to%20enquire%20about%20printing." target="_blank" rel="noopener">
+    Enquire on WhatsApp
+  </a>
+</section>
+
+<section id="contact">
+  <div class="section-title">
+    <h2>Contact SS PRINTING</h2>
+    <p>Let's discuss your next printing project.</p>
+  </div>
+  <div class="contact-box">
+    <p><strong>Business:</strong> SS PRINTING</p>
+    <p><strong>Address:</strong> Satyam Galleria, P-4, Greater Noida</p>
+    <p><strong>Phone:</strong> <a href="tel:+918796446612">8796446612</a></p>
+    <p><strong>Email:</strong> <a href="mailto:shrishyam9944@gmail.com">shrishyam9944@gmail.com</a></p>
+    <a class="btn" href="https://wa.me/918796446612" target="_blank" rel="noopener">WhatsApp Us</a>
+    <a class="btn" href="https://www.google.com/maps/search/?api=1&query=SS+PRINTING+Satyam+Galleria+P4+Greater+Noida" target="_blank" rel="noopener">Open Maps</a>
+  </div>
+</section>
+</main>
+
+<div id="preview" role="dialog" aria-modal="true" aria-label="Image preview" onclick="closePreview()">
+  <button id="previewClose" onclick="closePreview()" aria-label="Close preview">×</button>
+  <img id="previewImage" src="" alt="Sample preview">
+</div>
+
+<footer>
+  <p>© <span id="year"></span> SS PRINTING. All Rights Reserved.</p>
+  <p>Your Ideas, Our Print.</p>
+</footer>
+
+<a class="whatsapp-float" href="https://wa.me/918796446612" target="_blank" rel="noopener">
+  WhatsApp
+</a>
+
+<script>
+const WHATSAPP = "918796446612";
+
+const services = [
+  { id: "visiting", icon: "💳", title: "Visiting Cards", description: "Premium, standard and creative business cards." },
+  { id: "billbook", icon: "📒", title: "Bill Books & Notepads", description: "Invoice books, receipt books and notepads." },
+  { id: "sticker", icon: "🏷️", title: "Sticker Printing", description: "Product labels, bottle stickers and custom stickers." },
+  { id: "banner", icon: "🖼️", title: "Flex & Banners", description: "Shop banners, flex and advertising designs." },
+  { id: "stationery", icon: "✉️", title: "Letterheads & Envelopes", description: "Branded office stationery and envelopes." },
+  { id: "gifts", icon: "☕", title: "T-shirt & Mug Printing", description: "Custom gifts and promotional products." },
+  { id: "bags", icon: "🛍️", title: "Bags Printing", description: "Printed D-cut and non-woven bags." },
+  { id: "bottles", icon: "🧴", title: "Bottle Printing", description: "Custom bottle labels and branding." },
+  { id: "other", icon: "🎨", title: "Other Printing Work", description: "Explore more creative printing projects." }
+];
+
+/*
+  DEMO IMAGES:
+  Replace these sample URLs with links to your actual completed projects.
+  The images below are inspiration/demo images, not verified SS PRINTING jobs.
+*/
+const samples = {
+  visiting: [
+    { title: "Business Card Inspiration", image: "https://images.unsplash.com/photo-1634942536790-2536a6a2c4a8?auto=format&fit=crop&w=900&q=80" },
+    { title: "Creative Design Inspiration", image: "https://images.unsplash.com/photo-1589330694653-ded6df03f754?auto=format&fit=crop&w=900&q=80" }
+  ],
+  billbook: [
+    { title: "Office Paperwork Inspiration", image: "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=900&q=80" },
+    { title: "Notebook Inspiration", image: "https://images.unsplash.com/photo-1517842645767-c639042777db?auto=format&fit=crop&w=900&q=80" }
+  ],
+  sticker: [
+    { title: "Product Label Inspiration", image: "https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=900&q=80" },
+    { title: "Product Packaging Inspiration", image: "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=900&q=80" }
+  ],
+  banner: [
+    { title: "Colourful Advertising Inspiration", image: "https://images.unsplash.com/photo-1557683316-973673baf926?auto=format&fit=crop&w=900&q=80" },
+    { title: "Creative Background Inspiration", image: "https://images.unsplash.com/photo-1541701494587-cb58502866ab?auto=format&fit=crop&w=900&q=80" }
+  ],
+  stationery: [
+    { title: "Stationery Inspiration", image: "https://images.unsplash.com/photo-1586953208448-b95a79798f07?auto=format&fit=crop&w=900&q=80" }
+  ],
+  gifts: [
+    { title: "Creative Product Inspiration", image: "https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=900&q=80" },
+    { title: "Merchandise Inspiration", image: "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=900&q=80" }
+  ],
+  bags: [
+    { title: "Packaging Inspiration", image: "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=900&q=80" }
+  ],
+  bottles: [
+    { title: "Bottle Product Inspiration", image: "https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=900&q=80" }
+  ],
+  other: [
+    { title: "Creative Design Inspiration", image: "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=900&q=80" }
+  ]
+};
+
+const serviceGrid = document.getElementById("serviceGrid");
+
+function renderServices() {
+  serviceGrid.replaceChildren();
+
+  services.forEach(service => {
+    const card = document.createElement("article");
+    card.className = "card service-card";
+
+    const icon = document.createElement("div");
+    icon.className = "service-icon";
+    icon.textContent = service.icon;
+
+    const title = document.createElement("h3");
+    title.textContent = service.title;
+
+    const description = document.createElement("p");
+    description.textContent = service.description;
+
+    const button = document.createElement("button");
+    button.className = "view-btn";
+    button.textContent = "View Samples →";
+    button.addEventListener("click", () => openGallery(service.id));
+
+    card.append(icon, title, description, button);
+    serviceGrid.append(card);
+  });
+}
+
+function openGallery(id) {
+  const service = services.find(item => item.id === id);
+  if (!service) return;
+
+  document.getElementById("services").style.display = "none";
+  document.getElementById("platforms").style.display = "none";
+  document.getElementById("contact").style.display = "none";
+  document.querySelector(".cta").style.display = "none";
+  document.querySelector(".hero").style.display = "none";
+
+  const page = document.getElementById("galleryPage");
+  page.style.display = "block";
+  document.getElementById("galleryTitle").textContent = service.title + " Samples";
+  document.getElementById("galleryDescription").textContent =
+    "Explore the sample designs in " + service.title + ". Contact us to discuss your own order.";
+
+  const grid = document.getElementById("sampleGrid");
+  grid.replaceChildren();
+
+  const serviceSamples = samples[id] || [];
+
+  if (serviceSamples.length === 0) {
+    const message = document.createElement("p");
+    message.className = "empty-message";
+    message.textContent = "Samples will be added soon. Please contact us for details.";
+    grid.append(message);
+  }
+
+  serviceSamples.forEach(sample => {
+    const card = document.createElement("article");
+    card.className = "sample-card";
+
+    const image = document.createElement("img");
+    image.src = sample.image;
+    image.alt = sample.title;
+    image.loading = "lazy";
+    image.addEventListener("click", () => showPreview(sample.image, sample.title));
+    image.onerror = () => {
+      image.alt = "Sample image unavailable";
+      image.style.display = "none";
+    };
+
+    const info = document.createElement("div");
+    info.className = "sample-info";
+
+    const title = document.createElement("h3");
+    title.textContent = sample.title;
+
+    const enquiry = document.createElement("a");
+    enquiry.className = "view-btn";
+    enquiry.textContent = "Enquire About This";
+    enquiry.target = "_blank";
+    enquiry.rel = "noopener";
+    enquiry.href = whatsappLink("Hello SS PRINTING, I am interested in " +
+      service.title + " - " + sample.title + ".");
+
+    info.append(title, enquiry);
+    card.append(image, info);
+    grid.append(card);
+  });
+
+  const mainEnquiry = document.getElementById("galleryEnquiry");
+  mainEnquiry.href = whatsappLink("Hello SS PRINTING, I want to enquire about " + service.title + ".");
+
+  history.pushState({ gallery: id }, "", "#work-" + id);
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function whatsappLink(message) {
+  return "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(message);
+}
+
+function showHome() {
+  document.querySelector(".hero").style.display = "block";
+  document.getElementById("services").style.display = "block";
+  document.getElementById("platforms").style.display = "block";
+  document.getElementById("contact").style.display = "block";
+  document.querySelector(".cta").style.display = "block";
+  document.getElementById("galleryPage").style.display = "none";
+}
+
+function showPreview(url, title) {
+  const preview = document.getElementById("preview");
+  const image = document.getElementById("previewImage");
+  image.src = url;
+  image.alt = title;
+  preview.style.display = "flex";
+}
+
+function closePreview() {
+  document.getElementById("preview").style.display = "none";
+  document.getElementById("previewImage").src = "";
+}
+
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape") closePreview();
+});
+
+document.getElementById("previewImage").addEventListener("click", event => {
+  event.stopPropagation();
+});
+
+window.addEventListener("popstate", event => {
+  if (event.state && event.state.gallery) {
+    openGallery(event.state.gallery);
+  } else {
+    showHome();
+  }
+});
+
+document.getElementById("year").textContent = new Date().getFullYear();
+renderServices();
+</script>
+
+</body>
+</html>
