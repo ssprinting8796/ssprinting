@@ -21,8 +21,8 @@ const services = [
 */
 const samples = {
   visiting: [
-    { title: "Business Card Inspiration", image: "images/visiting/visiting-card-1.jpg" },
-    { title: "Creative Design Inspiration", image: "images/visiting/visiting-card-2.jpg" }
+    { title: "Business Card Inspiration", image: "images/visiting/card-1.jpg" },
+    // { title: "Creative Design Inspiration", image: "images/visiting/visiting-card-2.jpg" }
   ],
   billbook: [
     { title: "Office Paperwork Inspiration", image: "images/billbook/billbook-1.jpg" },
@@ -203,3 +203,34 @@ window.addEventListener("popstate", event => {
 
 document.getElementById("year").textContent = new Date().getFullYear();
 renderServices();
+
+
+
+// Disable Right Click
+document.addEventListener("contextmenu", function (e) {
+    e.preventDefault();
+    alert("Right Click is Disabled on SS PRINTING Website!");
+});
+
+// Disable Keyboard Shortcuts
+document.addEventListener("keydown", function (e) {
+
+    // Disable Ctrl and Command shortcuts
+    if (
+        (e.ctrlKey || e.metaKey) &&
+        ["c", "u", "s", "a", "v", "x", "p"].includes(e.key.toLowerCase())
+    ) {
+        e.preventDefault();
+        alert("This action is restricted on SS PRINTING Website!");
+    }
+
+    // Disable F12 and developer tool shortcuts
+    if (
+        e.key === "F12" ||
+        (e.ctrlKey && e.shiftKey &&
+        ["i", "j", "c"].includes(e.key.toLowerCase()))
+    ) {
+        e.preventDefault();
+        alert("Developer Tools are Disabled!");
+    }
+});
