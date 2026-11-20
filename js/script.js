@@ -210,31 +210,31 @@ renderServices();
 
 
 
-// // Disable Right Click
-// document.addEventListener("contextmenu", function (e) {
-//     e.preventDefault();
-//     alert("Right Click is Disabled on SS PRINTING Website!");
-// });
+// Disable Right Click
+document.addEventListener("contextmenu", function (e) {
+    e.preventDefault();
+    alert("Right Click is Disabled on SS PRINTING Website!");
+});
 
-// // Disable Keyboard Shortcuts
-// document.addEventListener("keydown", function (e) {
+// Disable Keyboard Shortcuts
+document.addEventListener("keydown", function (e) {
 
-//     // Disable Ctrl and Command shortcuts
-//     if (
-//         (e.ctrlKey || e.metaKey) &&
-//         ["c", "u", "s", "a", "v", "x", "p"].includes(e.key.toLowerCase())
-//     ) {
-//         e.preventDefault();
-//         alert("This action is restricted on SS PRINTING Website!");
-//     }
+    // Disable Ctrl and Command shortcuts
+    if (
+        (e.ctrlKey || e.metaKey) &&
+        ["c", "u", "s", "a", "v", "x", "p"].includes(e.key.toLowerCase())
+    ) {
+        e.preventDefault();
+        alert("This action is restricted on SS PRINTING Website!");
+    }
 
-//     // Disable F12 and developer tool shortcuts
-//     if (
-//         e.key === "F12" ||
-//         (e.ctrlKey && e.shiftKey &&
-//         ["i", "j", "c"].includes(e.key.toLowerCase()))
-//     ) {
-//         e.preventDefault();
-//         alert("Developer Tools are Disabled!");
-//     }
-// });
+    // Disable F12 and developer tool shortcuts
+    if (
+        e.key === "F12" ||
+        (e.ctrlKey && e.shiftKey &&
+        ["i", "j", "c"].includes(e.key.toLowerCase()))
+    ) {
+        e.preventDefault();
+        alert("Developer Tools are Disabled!");
+    }
+});
