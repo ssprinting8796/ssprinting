@@ -2,14 +2,15 @@ const WHATSAPP = "918796446612";
 
 const services = [
   { id: "visiting", icon: "💳", title: "Visiting Cards", description: "Premium, standard and creative business cards." },
-  { id: "billbook", icon: "📒", title: "Bill Books & Notepads", description: "Invoice books, receipt books and notepads." },
+  { id: "billbook", icon: "📒", title: "Bill Books & Slip card", description: "Invoice books, receipt books and notepads." },
   { id: "sticker", icon: "🏷️", title: "Sticker Printing", description: "Product labels, bottle stickers and custom stickers." },
   { id: "banner", icon: "🖼️", title: "Flex & Banners", description: "Shop banners, flex and advertising designs." },
-  { id: "stationery", icon: "✉️", title: "Letterheads & Envelopes", description: "Branded office stationery and envelopes." },
+  { id: "stationery", icon: "✉️", title: "Letterheads", description: "Branded office stationery and envelopes." },
   { id: "gifts", icon: "☕", title: "Mug Printing", description: "Custom gifts and promotional products." },
+  { id: "tshirt", icon: "👕", title: "t-shirt print", description: "Personalized T-shirt printing with creative designs, logos, names and high-quality prints on half and full sleeve T-shirts." },
   { id: "photoframe", icon: "🪞", title: "Photo Frame", description: "Customized photo frames for memories, gifts and special occasions." },
-  { id: "bags", icon: "🛍️", title: "Bags Printing", description: "Printed D-cut and non-woven bags." },
-  { id: "bottles", icon: "🧴", title: "Bottle Printing", description: "Custom bottle labels and branding." },
+  // { id: "bags", icon: "🛍️", title: "Bags Printing", description: "Printed D-cut and non-woven bags." },
+  // { id: "bottles", icon: "🧴", title: "Bottle Printing", description: "Custom bottle labels and branding." },
   { id: "acrylic", icon: "🪟", title: "Acrylic Sheet", description: "Premium customized acrylic sheets, name plates and decorative designs." },
   { id: "other", icon: "🎨", title: "Other Printing Work", description: "Explore more creative printing projects." }
 ];
@@ -25,19 +26,19 @@ const samples = {
     // { title: "Creative Design Inspiration", image: "images/visiting/visiting-card-2.jpg" }
   ],
   billbook: [
-    { title: "Office Paperwork Inspiration", image: "images/billbook/billbook-1.jpg" },
-    { title: "Notebook Inspiration", image: "images/billbook/billbook-2.jpg" }
+    { title: "Custom Printed Bill Books & Tax Invoices", image: "images/billbook/billbook1.png" },
+    { title: "Car Rental Custom Duty Slip Pads", image: "images/billbook/dutyslip1.png" }
   ],
   sticker: [
-    { title: "Product Label Inspiration", image: "images/sticker/sticker-1.jpg" },
-    { title: "Product Packaging Inspiration", image: "images/sticker/sticker-2.jpg" }
+    { title: "Product Sticker & Label Inspiration", image: "images/sticker/sticker1.png" },
+    // { title: "Product Packaging Inspiration", image: "images/sticker/sticker-2.jpg" }
   ],
   banner: [
-    { title: "Colourful Advertising Inspiration", image: "images/banner/banner-1.jpg" },
-    { title: "Creative Background Inspiration", image: "images/banner/banner-2.jpg" }
+    { title: "Colourful Advertising Inspiration", image: "images/banner/banner1.png" },
+    // { title: "Creative Background Inspiration", image: "images/banner/banner-2.jpg" }
   ],
   stationery: [
-    { title: "Stationery Inspiration", image: "images/stationery/stationery-1.jpg" }
+    { title: "Stationery Inspiration", image: "images/letterhead/letterhead1.png" }
   ],
   gifts: [
     { title: "Creative Product Inspiration", image: "images/gifts/gifts-1.jpg" },
@@ -56,6 +57,9 @@ const samples = {
   ],
   acrylic: [
     { title: "Acrylic Sheet Product Inspiration", image: "images/acyric/gifts-1.jpg" }
+  ],
+  tshirt: [
+    { title: "Modern & Attractive", image: "images/t-shirt/t-shirt1.png" }
   ],
   other: [
     { title: "Creative Design Inspiration", image: "images/other/other-1.jpg" }
@@ -206,31 +210,31 @@ renderServices();
 
 
 
-// Disable Right Click
-document.addEventListener("contextmenu", function (e) {
-    e.preventDefault();
-    alert("Right Click is Disabled on SS PRINTING Website!");
-});
+// // Disable Right Click
+// document.addEventListener("contextmenu", function (e) {
+//     e.preventDefault();
+//     alert("Right Click is Disabled on SS PRINTING Website!");
+// });
 
-// Disable Keyboard Shortcuts
-document.addEventListener("keydown", function (e) {
+// // Disable Keyboard Shortcuts
+// document.addEventListener("keydown", function (e) {
 
-    // Disable Ctrl and Command shortcuts
-    if (
-        (e.ctrlKey || e.metaKey) &&
-        ["c", "u", "s", "a", "v", "x", "p"].includes(e.key.toLowerCase())
-    ) {
-        e.preventDefault();
-        alert("This action is restricted on SS PRINTING Website!");
-    }
+//     // Disable Ctrl and Command shortcuts
+//     if (
+//         (e.ctrlKey || e.metaKey) &&
+//         ["c", "u", "s", "a", "v", "x", "p"].includes(e.key.toLowerCase())
+//     ) {
+//         e.preventDefault();
+//         alert("This action is restricted on SS PRINTING Website!");
+//     }
 
-    // Disable F12 and developer tool shortcuts
-    if (
-        e.key === "F12" ||
-        (e.ctrlKey && e.shiftKey &&
-        ["i", "j", "c"].includes(e.key.toLowerCase()))
-    ) {
-        e.preventDefault();
-        alert("Developer Tools are Disabled!");
-    }
-});
+//     // Disable F12 and developer tool shortcuts
+//     if (
+//         e.key === "F12" ||
+//         (e.ctrlKey && e.shiftKey &&
+//         ["i", "j", "c"].includes(e.key.toLowerCase()))
+//     ) {
+//         e.preventDefault();
+//         alert("Developer Tools are Disabled!");
+//     }
+// });

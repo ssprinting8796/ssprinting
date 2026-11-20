@@ -178,3 +178,7 @@ footer { background: #041225; color: white; text-align: center; padding: 23px; f
   .grid { grid-template-columns: repeat(auto-fit, minmax(155px, 1fr)); gap: 13px; }
   .service-card { padding: 20px 12px; }
 }
+#notes{
+  color: red;
+  font-style: italic;
+}
