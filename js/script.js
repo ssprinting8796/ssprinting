@@ -62,7 +62,7 @@ const samples = {
     { title: "Modern & Attractive", image: "images/t-shirt/t-shirt1.png" }
   ],
   other: [
-    { title: "Creative Design Inspiration", image: "images/other/other-1.jpg" }
+    { title: "Creative Design Inspiration", image: "images/other/image.png" }
   ]
 };
 
@@ -237,4 +237,60 @@ document.addEventListener("keydown", function (e) {
         e.preventDefault();
         alert("Developer Tools are Disabled!");
     }
+});
+
+
+
+// OUR SELLING PRODUCTS COUNTER ANIMATION
+
+const sellingCounters = document.querySelectorAll(".selling-count");
+
+const sellingObserver = new IntersectionObserver((entries, observer) => {
+
+    entries.forEach(entry => {
+
+        if (entry.isIntersecting) {
+
+            const counter = entry.target;
+            const target = Number(counter.dataset.target);
+
+            const duration = 2000;
+            const startTime = performance.now();
+
+            function updateCounter(currentTime) {
+
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+
+                // Smooth ease-out animation
+                const easedProgress = 1 - Math.pow(1 - progress, 3);
+
+                const currentValue = Math.floor(
+                    easedProgress * target
+                );
+
+                counter.textContent = currentValue.toLocaleString("en-IN");
+
+                if (progress < 1) {
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    counter.textContent = target.toLocaleString("en-IN");
+                }
+            }
+
+            requestAnimationFrame(updateCounter);
+
+            // Run animation only once
+            observer.unobserve(counter);
+        }
+
+    });
+
+}, {
+    threshold: 0.5
+});
+
+// Observe all product counters
+sellingCounters.forEach(counter => {
+    sellingObserver.observe(counter);
 });
